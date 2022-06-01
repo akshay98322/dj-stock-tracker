@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %} {% load static %} {% block title %} Stock Picker
+{% endblock %} {% block css %}
+<style></style>
+{% endblock %} {% block body %}
+<div class="container">
+  <h1>Live Stock Tracker</h1>
+  <form action="/stocktracker">
+    <label for="stockpicker">Select Stocks:</label>
+
+    <select
+      class="form-select form-select my-2"
+      multiple
+      aria-label="multiple select example"
+      name="stockpicker"
+    >
+    {% for stock in stock_picker %}
+      <option value="{{stock}}">{{stock}}</option>
+    {% endfor %}
+    </select>
+    <br>
+    <input type="submit" class="btn btn-primary" value="Submit">
+  </form>
+</div>
+{% endblock %} {% block js %}
+<script></script>
+{% endblock %}
