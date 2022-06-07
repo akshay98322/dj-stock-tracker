@@ -7,7 +7,6 @@ import queue
 from yahoo_fin.stock_info import tickers_nifty50, get_quote_table
 
 
-
 def stockPicker(request):
     stock_picker = tickers_nifty50()
     return render(request, 'core/stockpicker.html', {'stock_picker': stock_picker})

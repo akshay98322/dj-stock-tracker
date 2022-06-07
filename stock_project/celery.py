@@ -14,10 +14,10 @@ app.config_from_object(settings, namespace='CELERY')
 
 app.conf.beat_schedule = {
     'every-10-sec' : {
-        'task' : 'stock_project.tasks.update_stocks',
+        'task' : 'core.tasks.update_stocks',
         'schedule' : 10,
-        'args' : (['RELIANCE.NS','ONGC.NS'])
-    }
+        'args' : (['RELIANCE.NS','ONGC.NS'],)
+    },
 }
 
 app.autodiscover_tasks()
