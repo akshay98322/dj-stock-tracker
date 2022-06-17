@@ -42,4 +42,4 @@ def stockTracker(request):
     
 
 
-    return render(request, 'core/stocktracker.html', {"data": data})
+    return render(request, 'core/stocktracker.html', {"data": data, 'room_name': 'track'})

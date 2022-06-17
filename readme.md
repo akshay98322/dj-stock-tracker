@@ -1,5 +1,5 @@
-docker run -p 6379:6379 --name redis-service redis
+docker run -p 6379:6379 --name redis redis
 celery -A stock_project.celery worker --pool=solo -l info
 celery -A stock_project beat -l INFO
-
-pip install -r /requirements.txt
+python manage.py runserver
+pip install -r requirements.txt
