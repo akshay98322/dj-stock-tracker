@@ -8,3 +8,4 @@ django-celery-beat==2.2.0
 channels==3.0.3
 channels-redis==3.2.0
 asyncio==3.4.3
+simplejson==3.17.2
