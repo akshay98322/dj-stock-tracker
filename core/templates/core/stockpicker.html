@@ -13,12 +13,12 @@
       aria-label="multiple select example"
       name="stockpicker"
     >
-    {% for stock in stockpicker %}
+      {% for stock in stockpicker %}
       <option value="{{stock}}">{{stock}}</option>
-    {% endfor %}
+      {% endfor %}
     </select>
-    <br>
-    <input type="submit" class="btn btn-primary" value="Submit">
+    <br />
+    <input type="submit" class="btn btn-primary" value="Submit" />
   </form>
 </div>
 {% endblock %} {% block js %}

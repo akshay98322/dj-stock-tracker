@@ -1,10 +1,13 @@
+import copy
 import json
-from .models import StockDetail
-from channels.generic.websocket import AsyncWebsocketConsumer
+
 from urllib.parse import parse_qs
 from asgiref.sync import sync_to_async, async_to_sync
+from channels.generic.websocket import AsyncWebsocketConsumer
 from django_celery_beat.models import PeriodicTask, IntervalSchedule
-import copy
+
+from .models import StockDetail
+
 
 class StockConsumer(AsyncWebsocketConsumer):
     @sync_to_async
@@ -41,7 +44,6 @@ class StockConsumer(AsyncWebsocketConsumer):
         )
         #  parse query string
         query_params = parse_qs(self.scope["query_string"].decode())
-        print(query_params)
         stockpicker = query_params['stockpicker']
 
         # add to celery beat

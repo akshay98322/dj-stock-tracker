@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    {% load static %}
+  {% load static %}
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,7 +11,11 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" type="text/css" href="{% static 'core/css/basic.css' %}" >
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'core/css/basic.css' %}"
+    />
     <style></style>
     {% block css %} {% endblock %}
   </head>
@@ -31,8 +35,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">           
-          </ul>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
           <form class="d-flex" role="search">
             <input
               class="form-control me-2"
@@ -47,7 +50,7 @@
         </div>
       </div>
     </nav>
-    
+
     {% block body %} {% endblock %}
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"

@@ -1,9 +1,10 @@
+import queue
+import asyncio
+from threading import Thread
+
 from celery import shared_task
 from yahoo_fin.stock_info import *
-from threading import Thread
-import queue
 from channels.layers import get_channel_layer
-import asyncio
 import simplejson as json
 
 
