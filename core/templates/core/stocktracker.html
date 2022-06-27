@@ -77,5 +77,10 @@
     '?' +
     queryString
   );
+  stockSocket.onmessage = function(e) {
+    console.log(e.data);
+    const data = JSON.parse(e.data);
+    console.log(data);
+  }
 </script>
 {% endblock %}

@@ -1,23 +1,23 @@
 from celery import shared_task
-from channels.layers import get_channel_layer
+from yahoo_fin.stock_info import *
 from threading import Thread
 import queue
+from channels.layers import get_channel_layer
 import asyncio
 
-from yahoo_fin.stock_info import tickers_nifty50, get_quote_table
 
 @shared_task(bind=True)
-def update_stocks(self, stock_picker):
+def update_stock(self, stockpicker):
     data = {}
     available_stocks = tickers_nifty50()
-    for stock in stock_picker:
+    for stock in stockpicker:
         if stock not in available_stocks:
-            stock_picker.remove(stock)    
-    n_threads = len(stock_picker)
+            stockpicker.remove(stock)    
+    n_threads = len(stockpicker)
     thread_list = []
     que = queue.Queue()
     for i in range(n_threads):
-        thread = Thread(target = lambda q, arg1: q.put({stock_picker[i]: get_quote_table(arg1)}), args = (que, stock_picker[i]))
+        thread = Thread(target = lambda q, arg1: q.put({stockpicker[i]: get_quote_table(arg1)}), args = (que, stockpicker[i]))
         thread_list.append(thread)
         thread_list[i].start()
     
