@@ -5,13 +5,22 @@ from threading import Thread
 import queue
 
 from yahoo_fin.stock_info import tickers_nifty50, get_quote_table
+from asgiref.sync import sync_to_async
 
 
 def stockPicker(request):
     stockpicker = tickers_nifty50()
     return render(request, 'core/stockpicker.html', {'stockpicker': stockpicker})
-
-def stockTracker(request):
+@sync_to_async
+def checkAuth(request):
+    if request.user.is_authenticated:
+        return True
+    else:
+        return False
+async def stockTracker(request):
+    is_logged = await checkAuth(request)
+    if not is_logged:
+        return HttpResponse("You are not logged in")
     stockpicker = request.GET.getlist('stockpicker')
     # print(stockpicker)    
     data = {}
